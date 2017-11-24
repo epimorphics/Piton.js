@@ -1,0 +1,28 @@
+{ 
+  "@context" : "http://environment.data.gov.uk/water-quality/doc/context-TBD.jsonld" ,
+  "meta" : { 
+    "publisher" : "Environment Agency" ,
+    "licence" : "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" ,
+    "documentation" : "http://environment.data.gov.uk/catchment-planning/ui/reference" ,
+    "version" : "0.1" ,
+    "comment" : "WARNING: Pre-alpha test service" ,
+    "hasFormat" : [ "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/12.rdf", "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/12.ttl", "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/12.html" ]
+  }
+   ,
+  "items" : [ { 
+    "@id" : "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/12" ,
+    "inspireNotation" : "12" ,
+    "label" : "North West" ,
+    "notation" : "12" ,
+    "riverBasinDistrictNotation" : "12" ,
+    "type" : [ { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict"
+    }
+    , { 
+      "@id" : "http://purl.org/linked-data/version#VersionedThing"
+    }
+     ]
+  }
+   ]
+}
+

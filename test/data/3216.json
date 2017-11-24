@@ -1,0 +1,220 @@
+{ 
+  "@context" : "http://environment.data.gov.uk/water-quality/doc/context-TBD.jsonld" ,
+  "meta" : { 
+    "publisher" : "Environment Agency" ,
+    "licence" : "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" ,
+    "documentation" : "http://environment.data.gov.uk/catchment-planning/ui/reference" ,
+    "version" : "0.1" ,
+    "comment" : "WARNING: Pre-alpha test service" ,
+    "hasFormat" : [ "http://environment.data.gov.uk/catchment-planning/so/OperationalCatchment/3216.rdf", "http://environment.data.gov.uk/catchment-planning/so/OperationalCatchment/3216.ttl", "http://environment.data.gov.uk/catchment-planning/so/OperationalCatchment/3216.html" ]
+  }
+   ,
+  "items" : [ { 
+    "@id" : "http://environment.data.gov.uk/catchment-planning/so/OperationalCatchment/3216" ,
+    "district" : [ { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000010495"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000014202"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000014422"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000014451"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000017733"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000043462"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000043511"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000043925"
+    }
+     ] ,
+    "inManagementCatchment" : { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3006" ,
+      "inRiverBasinDistrict" : { 
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/8" ,
+        "inspireNotation" : "8" ,
+        "label" : "South West" ,
+        "notation" : "8" ,
+        "riverBasinDistrictNotation" : "8" ,
+        "type" : [ { 
+          "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict"
+        }
+        , { 
+          "@id" : "http://purl.org/linked-data/version#VersionedThing"
+        }
+         ]
+      }
+       ,
+      "inspireNotation" : 3006 ,
+      "label" : "Avon Hampshire" ,
+      "managementCatchmentNotation" : "3006" ,
+      "notation" : 3006 ,
+      "type" : [ { 
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/ManagementCatchment"
+      }
+      , { 
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/SurfaceWater"
+      }
+       ]
+    }
+     ,
+    "inRiverBasinDistrict" : { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/8" ,
+      "inspireNotation" : "8" ,
+      "label" : "South West" ,
+      "notation" : "8" ,
+      "riverBasinDistrictNotation" : "8" ,
+      "type" : [ { 
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict"
+      }
+      , { 
+        "@id" : "http://purl.org/linked-data/version#VersionedThing"
+      }
+       ]
+    }
+     ,
+    "inspireNotation" : 3216 ,
+    "label" : "Avon Hampshire" ,
+    "notation" : 3216 ,
+    "operationalCatchmentNotation" : "3216" ,
+    "town" : [ { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/andover"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/bournemouth"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/christchurch"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/devizes"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/fordingbridge"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/frome"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/lyndhurst"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/marlborough"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/new-milton"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/pewsey"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/ringwood"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/salisbury"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/shaftesbury"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/tidworth"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/verwood"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/warminster"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/westbury"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/wimborne"
+    }
+     ] ,
+    "type" : [ { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/OperationalCatchment"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/SurfaceWater"
+    }
+     ] ,
+    "within" : [ { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA11"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA12"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA13"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH21"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH23"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH24"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH25"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH31"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BH6"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SN10"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SN8"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SN9"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SO43"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP1"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP11"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP2"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP3"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP4"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP5"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP6"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP7"
+    }
+    , { 
+      "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/SP9"
+    }
+     ]
+  }
+   ]
+}
+

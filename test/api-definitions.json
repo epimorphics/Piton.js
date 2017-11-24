@@ -1,0 +1,62 @@
+{
+  "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict": {
+    "statics": {
+      "slug": "RiverBasinDistrict",
+      "type": "River Basin District"
+    },
+    "props": {
+      "label": "label",
+      "notation": "notation"
+    },
+    "required": ["label", "notation", "slug", "type"]
+  },
+  "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/ManagementCatchment": {
+    "statics": {
+      "slug": "ManagementCatchment",
+      "type": "Management Catchment"
+    },
+    "props": {
+      "label": "label",
+      "notation": "notation",
+      "riverBasinDistrict": "inRiverBasinDistrict"
+    },
+    "required": ["label", "notation", "slug", "type"]
+  },
+  "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/OperationalCatchment": {
+    "statics": {
+      "slug": "OperationalCatchment",
+      "type": "Operational Catchment"
+    },
+    "props": {
+      "label": "label",
+      "notation": "notation",
+      "managementCatchment": "inManagementCatchment",
+      "riverBasinDistrict": "inRiverBasinDistrict"
+    },
+    "required": ["label", "notation", "slug", "type"]
+  },
+  "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/WaterBody": {
+    "statics": {
+      "slug": "WaterBody",
+      "type": "Water Body",
+      "characteristics": []
+    },
+    "props": {
+      "label": "currentVersion.label",
+      "notation": "currentVersion.notation",
+      "characteristics": "characteristic",
+      "riverBasinDistrict": "inRiverBasinDistrict",
+      "hydromorphologicalDesignation": "hydromorphologicalDesignation",
+      "immediateDownStream": "currentVersion.immediateDownStream"
+    },
+    "required": ["label", "notation", "slug", "type"]
+  },
+  "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/HydromorphologicalDesignation": {
+    "statics": {},
+    "props": {
+      "label": "label",
+      "comment": "comment"
+    },
+    "required": ["label", "comment"]
+  }
+}

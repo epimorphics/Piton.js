@@ -1,0 +1,43 @@
+{ 
+  "@context" : "http://environment.data.gov.uk/water-quality/doc/context-TBD.jsonld" ,
+  "meta" : { 
+    "publisher" : "Environment Agency" ,
+    "licence" : "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" ,
+    "documentation" : "http://environment.data.gov.uk/catchment-planning/ui/reference" ,
+    "version" : "0.1" ,
+    "comment" : "WARNING: Pre-alpha test service" ,
+    "hasFormat" : [ "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3049.rdf", "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3049.ttl", "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3049.html" ]
+  }
+   ,
+  "items" : [ { 
+    "@id" : "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3049" ,
+    "inRiverBasinDistrict" : { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/6" ,
+      "inspireNotation" : "6" ,
+      "label" : "Thames" ,
+      "notation" : "6" ,
+      "riverBasinDistrictNotation" : "6" ,
+      "type" : [ { 
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict"
+      }
+      , { 
+        "@id" : "http://purl.org/linked-data/version#VersionedThing"
+      }
+       ]
+    }
+     ,
+    "inspireNotation" : 3049 ,
+    "label" : "London" ,
+    "managementCatchmentNotation" : "3049" ,
+    "notation" : 3049 ,
+    "type" : [ { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/ManagementCatchment"
+    }
+    , { 
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/SurfaceWater"
+    }
+     ]
+  }
+   ]
+}
+

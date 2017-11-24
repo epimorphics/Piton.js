@@ -1,0 +1,371 @@
+{
+  "@context" : "http://environment.data.gov.uk/water-quality/doc/context-TBD.jsonld" ,
+  "meta" : {
+    "publisher" : "Environment Agency" ,
+    "licence" : "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" ,
+    "documentation" : "http://environment.data.gov.uk/catchment-planning/ui/reference" ,
+    "version" : "0.1" ,
+    "comment" : "WARNING: Pre-alpha test service" ,
+    "hasFormat" : [ "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530.rdf", "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530.ttl", "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530.html" ]
+  }
+   ,
+  "items" : [ {
+    "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530" ,
+    "characteristic" : [ {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_147/GB109053027530" ,
+      "characteristicID" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_147" ,
+        "characteristicUnit" : "ha" ,
+        "label" : "Catchment area"
+      }
+       ,
+      "characteristicValue" : 2126.216
+    }
+    , {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_149/GB109053027530" ,
+      "characteristicID" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_149" ,
+        "characteristicUnit" : "km" ,
+        "label" : "Length"
+      }
+       ,
+      "characteristicValue" : 7.878
+    }
+    , {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_153/GB109053027530" ,
+      "characteristicID" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_153" ,
+        "label" : "Surveillance Water Body"
+      }
+       ,
+      "characteristicValue" : "No"
+    }
+    , {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_197/GB109053027530" ,
+      "characteristicID" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/waterbody-classification/characteristic_197" ,
+        "characteristicUnit" : "km2" ,
+        "label" : "Catchment area"
+      }
+       ,
+      "characteristicValue" : 21.262
+    }
+     ] ,
+    "currentVersion" : {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2" ,
+      "competentAuthority" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/competentAuthority"
+      }
+       ,
+      "downStream" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415401"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415405"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB640807670000"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB641008660000"
+      }
+       ] ,
+      "envelope" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/envelope"
+      }
+       ,
+      "hydromorphologicalDesignation" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/ahm_heavilyModified" ,
+        "comment" : "Indicates a body of surface water that has been designated as being the result of physical alterations by human activity, is substantially changed in character, as designated by the Member State in accordance with the provisions of the Water Framework Directive Annex II." ,
+        "isDefinedBy" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/sources/def/water-framework-directive.ttl"
+        }
+         ,
+        "label" : "heavily modified" ,
+        "topConceptOf" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/aOrHMConceptScheme"
+        }
+         ,
+        "type" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/HydromorphologicalDesignation"
+        }
+      }
+       ,
+      "immediateDownStream" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415405"
+      }
+       ,
+      "inspireNotation" : "GB109053027530" ,
+      "interval" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/interval"
+      }
+       ,
+      "isVersionOf" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530" ,
+      "label" : "Trym - source to conf R Avon (Brist)" ,
+      "ngr" : "ST5631078667" ,
+      "notation" : "GB109053027530" ,
+      "representativePoint" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/representativePoint"
+      }
+       ,
+      "type" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/River"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/WaterBody"
+      }
+      , {
+        "@id" : "http://purl.org/linked-data/version#Version"
+      }
+       ] ,
+      "versionInfo" : "2" ,
+      "waterBodyCatchment" : "GB109053027530" ,
+      "waterBodyNotation" : "GB109053027530"
+    }
+     ,
+    "hasVersion" : [ {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/1"
+    }
+    , {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2" ,
+      "competentAuthority" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/competentAuthority"
+      }
+       ,
+      "downStream" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415401"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415405"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB640807670000"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB641008660000"
+      }
+       ] ,
+      "envelope" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/envelope"
+      }
+       ,
+      "hydromorphologicalDesignation" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/ahm_heavilyModified" ,
+        "comment" : "Indicates a body of surface water that has been designated as being the result of physical alterations by human activity, is substantially changed in character, as designated by the Member State in accordance with the provisions of the Water Framework Directive Annex II." ,
+        "isDefinedBy" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/sources/def/water-framework-directive.ttl"
+        }
+         ,
+        "label" : "heavily modified" ,
+        "topConceptOf" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/aOrHMConceptScheme"
+        }
+         ,
+        "type" : {
+          "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/HydromorphologicalDesignation"
+        }
+      }
+       ,
+      "immediateDownStream" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB530905415405"
+      }
+       ,
+      "inspireNotation" : "GB109053027530" ,
+      "interval" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/interval"
+      }
+       ,
+      "isVersionOf" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530" ,
+      "label" : "Trym - source to conf R Avon (Brist)" ,
+      "ngr" : "ST5631078667" ,
+      "notation" : "GB109053027530" ,
+      "representativePoint" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530/2/representativePoint"
+      }
+       ,
+      "type" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/River"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/WaterBody"
+      }
+      , {
+        "@id" : "http://purl.org/linked-data/version#Version"
+      }
+       ] ,
+      "versionInfo" : "2" ,
+      "waterBodyCatchment" : "GB109053027530" ,
+      "waterBodyNotation" : "GB109053027530"
+    }
+     ] ,
+    "inOperationalCatchment" : {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/so/OperationalCatchment/3046" ,
+      "district" : [ {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000025504"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000025523"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000025554"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000025559"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/7000000000043925"
+      }
+       ] ,
+      "inManagementCatchment" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/ManagementCatchment/3005"
+      }
+       ,
+      "inRiverBasinDistrict" : {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/RiverBasinDistrict/9"
+      }
+       ,
+      "inspireNotation" : 3046 ,
+      "label" : "Avon Bristol Urban" ,
+      "notation" : 3046 ,
+      "operationalCatchmentNotation" : "3046" ,
+      "town" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/badminton"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/bath"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/bradford-on-avon"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/bristol"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/trowbridge"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/so/Town/wotton-under-edge"
+      }
+       ] ,
+      "type" : [ {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/OperationalCatchment"
+      }
+      , {
+        "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/SurfaceWater"
+      }
+       ] ,
+      "within" : [ {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA1"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA14"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA15"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BA2"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS1"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS10"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS11"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS13"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS14"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS15"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS16"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS2"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS20"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS3"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS30"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS31"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS32"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS34"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS35"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS36"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS37"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS39"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS4"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS41"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS5"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS6"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS7"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS8"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS9"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/BS98"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/GL12"
+      }
+      , {
+        "@id" : "http://data.ordnancesurvey.co.uk/id/postcodedistrict/GL9"
+      }
+       ]
+    }
+     ,
+    "inspireNotation" : "GB109053027530" ,
+    "notation" : "GB109053027530" ,
+    "type" : [ {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/River"
+    }
+    , {
+      "@id" : "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/WaterBody"
+    }
+    , {
+      "@id" : "http://purl.org/linked-data/version#VersionedThing"
+    }
+     ] ,
+    "waterbodyNotation" : "GB109053027530"
+  }
+   ]
+}
