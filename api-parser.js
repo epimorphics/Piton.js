@@ -34,7 +34,6 @@ function stripWrapper (res) {
 
 function checkExists (obj, required) {
   // Check properties exist
-  console.log(required)
   for (let prop of required) {
     if(!obj.hasOwnProperty(prop) || typeof obj[prop] === 'undefined') {
       return prop
@@ -60,7 +59,6 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
 
     if(obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
       // simply @id with no data.
-      ++hops // Increment hops
       obj = await axios.get(obj['@id'], {headers: {'Accept': 'application/json'}})
         .catch((e) => {
           console.log('Promise error', e)
@@ -85,10 +83,10 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
       }
       if (Array.isArray(val)) {
         // Array value. Process each individually
-        val = await processAPIResponse(val, definitions, ++hops)
+        val = await processAPIResponse(val, definitions, hops + 1)
       }
       if (val['@id'] && Object.keys(val).length === 1) {
-        val = await processAPIResponse(val, definitions, ++hops)
+        val = await processAPIResponse(val, definitions, hops + 1)
       }
       // Add the value to object being built
       if (Array.isArray(rtn[prop])) { // Add / Append value to array
