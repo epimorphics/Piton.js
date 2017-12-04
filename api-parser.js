@@ -1,5 +1,6 @@
 const _ = require('lodash')
-axios = require('axios')
+const axios = require('axios')
+
 // Ensures var passed in is of type Array,
 // or adds it to new Array
 function ensureIsArray (prop) {
@@ -9,7 +10,7 @@ function ensureIsArray (prop) {
 
 // Return first item in array
 function ensureIsSingle (prop) {
-  if(!Array.isArray(prop)) return prop
+  if (!Array.isArray(prop)) return prop
   return prop[0]
 }
 
@@ -35,7 +36,7 @@ function stripWrapper (res) {
 function checkExists (obj, required) {
   // Check properties exist
   for (let prop of required) {
-    if(!obj.hasOwnProperty(prop) || typeof obj[prop] === 'undefined') {
+    if (!obj.hasOwnProperty(prop) || typeof obj[prop] === 'undefined') {
       return prop
     }
   }
@@ -57,8 +58,11 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
       )
     }
 
-    if(obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
+    if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
       // simply @id with no data.
+      console.log('Loading', obj['@id'])
+      let urlParts = obj['@id'].split('/')
+      if (urlParts[2] && urlParts[2] === 'raw.github.com') return
       obj = await axios.get(obj['@id'], {headers: {'Accept': 'application/json'}})
         .catch((e) => {
           console.log('Promise error', e)
@@ -100,7 +104,7 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
       }
     }
 
-    if(DEFINITION.required && checkExists(rtn, DEFINITION.required)) {
+    if (DEFINITION.required && checkExists(rtn, DEFINITION.required)) {
       reject(new Error('property: ' + checkExists(rtn, DEFINITION.required) + ' not in obj: ' + JSON.stringify(rtn)))
     }
 
