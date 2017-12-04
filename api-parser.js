@@ -112,9 +112,11 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
   })
 }
 
-exports.processAPIResponse = processAPIResponse
-exports.ensureIsArray = ensureIsArray
-exports.ensureIsSingle = ensureIsSingle
-exports.findObjectType = findObjectType
-exports.stripWrapper = stripWrapper
-exports.checkExists = checkExists
+export {
+  processAPIResponse,
+  ensureIsArray,
+  ensureIsSingle,
+  findObjectType,
+  stripWrapper,
+  checkExists
+}

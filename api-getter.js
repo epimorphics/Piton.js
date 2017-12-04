@@ -2,8 +2,7 @@ const axios = require('axios')
 var checker = require('./api-parser.js')
 // const API_DEFINITIONS = require('./test/api-definitions.json')
 
-
-function epiAPI (API_DEFINITIONS) {
+function EpiAPI (API_DEFINITIONS) {
   return {
     getAPI: function (endpoint) {
       return axios.get(endpoint)
@@ -29,4 +28,4 @@ function epiAPI (API_DEFINITIONS) {
 
 // doThing()
 
-exports.epiAPI = epiAPI
+export default EpiAPI
