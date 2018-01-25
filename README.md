@@ -1,6 +1,6 @@
 # Piton.js
 
-[![Build Status](https://travis-ci.com/epimorphics/JSON-LD-JS-API.svg?token=SsrjjdmEtzcJsGDqjxQw&branch=master)](https://travis-ci.com/epimorphics/JSON-LD-JS-API)
+[![Build Status](https://travis-ci.com/epimorphics/Piton.js.svg?token=SsrjjdmEtzcJsGDqjxQw&branch=master)](https://travis-ci.com/epimorphics/Piton.js)
 
 ![A Piton](piton.png)
 
