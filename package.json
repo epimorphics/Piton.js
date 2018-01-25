@@ -1,7 +1,7 @@
 {
   "name": "api-parser",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "src/api-getter.js",
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
@@ -10,21 +10,21 @@
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "major-release": "npm version major && npm publish && git push --follow-tags"
   },
-  "main": "src/api-getter.js",
   "dependencies": {
-    "assert-throws-async": "^2.0.1",
     "axios": "^0.17.1",
-    "babel-eslint": "^8.0.3",
+    "yarn": "^1.4.0"
+  },
+  "devDependencies": {
+    "assert-throws-async": "^2.0.1",
+    "babel-eslint": "^8.2.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
-    "eslint": "^4.12.1",
+    "eslint": "^4.16.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^4.0.1",
-    "yarn": "^1.3.2"
+    "mocha": "^5.0.0"
   }
 }
