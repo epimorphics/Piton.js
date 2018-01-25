@@ -1,5 +1,5 @@
 {
-  "name": "api-parser",
+  "name": "Piton",
   "version": "0.1.0",
   "main": "src/api-getter.js",
   "license": "MIT",
