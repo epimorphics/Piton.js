@@ -1,7 +1,7 @@
 # Piton.js
 Piton.js builds a consistent platform on which to use data retrieved from a JSON-LD Resful API.
 
-Objects are defined in a JSON document, which is then used after querying the API to shape the result in a consistent shape.
+Piton supports a Promise-based interface for loading JSON Linked Data documents and expanding links.
 
 ## Usage
 `processAPIResponse (obj, definitions [, hops])`
