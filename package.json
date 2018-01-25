@@ -4,8 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "lint": "eslint --ext .js src test/unit/specs test/e2e/specs",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish && git push --follow-tags",
+    "major-release": "npm version major && npm publish && git push --follow-tags"
   },
+  "main": "src/api-getter.js",
   "dependencies": {
     "assert-throws-async": "^2.0.1",
     "axios": "^0.17.1",
