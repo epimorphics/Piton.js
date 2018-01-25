@@ -18,9 +18,9 @@ function ensureIsSingle (prop) {
 // Returns String type
 function findObjectType (obj = {}, definitions = []) {
   if (!obj.type) return
-  return ensureIsArray(obj.type).find((val) => {
-    if (val['@id']) val = val['@id']
-    return definitions.indexOf(val) > -1
+  let types = ensureIsArray(obj.type).map((typ) => typ['@id'] || typ)
+  return definitions.find((val) => {
+    return types.indexOf(val) > -1
   })
 }
 
@@ -60,23 +60,28 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
 
     if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
       // simply @id with no data.
-      console.log('Loading', obj['@id'])
-      let urlParts = obj['@id'].split('/')
-      if (urlParts[2] && urlParts[2] === 'raw.github.com') return
       obj = await axios.get(obj['@id'], {headers: {'Accept': 'application/json'}})
-        .catch((e) => {
-          console.log('Promise error', e)
-        })
         .then((resp) => stripWrapper(resp.data))
-        .then(ensureIsSingle)
+        .then(ensureIsSingle).catch((e) => {
+          return obj
+        })
     }
 
-    // Find type of obj - Assuming they're all the same
-    const objType = findObjectType(obj, Object.keys(definitions)) // Get objects type
-    if (!objType) return resolve(obj)
+    // Find type of obj
+    let objType = findObjectType(obj, Object.keys(definitions)) // Get objects type
+    if (!objType) {
+      return resolve(obj)
+    }
+
+    if (objType['@id']) {
+      objType = objType['@id']
+    }
 
     // Get definition of object type
-    const DEFINITION = definitions[objType['@id']] // TODO Cleanup this to not be object but string
+    const DEFINITION = definitions[objType] // TODO Cleanup this to not be object but string
+    if (!DEFINITION) {
+      return resolve(obj)
+    }
     // Apply transform.
     let rtn = JSON.parse(JSON.stringify(DEFINITION.statics))
     for (let prop in DEFINITION.props) {
