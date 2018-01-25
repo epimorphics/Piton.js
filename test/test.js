@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 var assert = require('assert')
 const assertThrows = require('assert-throws-async')
-var checker = require('../api-parser.js')
+var checker = require('../src/api-parser.js')
 const API_DEFINITIONS = require('./api-definitions.json')
 
 const riverBasinDistrict = require('./data/12.json')
@@ -30,7 +30,7 @@ describe('Api Checker', function () {
     })
     it('should return id when the value is present', function () {
       let obj = {type: {'@id': 'http://www.example.com'}}
-      assert.equal(obj.type, checker.findObjectType(obj, ['http://www.example.com']))
+      assert.equal(obj.type['@id'], checker.findObjectType(obj, ['http://www.example.com']))
     })
   })
 
