@@ -1,5 +1,5 @@
-# JSON-LD Js Api
-The aim of this project is to build a consistent platform on which to download data from a JSON-LD Resful API.
+# Piton.js
+Piton.js builds a consistent platform on which to use data retrieved from a JSON-LD Resful API.
 
 Objects are defined in a JSON document, which is then used after querying the API to shape the result in a consistent shape.
 
