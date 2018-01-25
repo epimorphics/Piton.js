@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/epimorphics/JSON-LD-JS-API.svg?token=SsrjjdmEtzcJsGDqjxQw&branch=master)](https://travis-ci.com/epimorphics/JSON-LD-JS-API)
 
+![A Piton](piton.png)
+
 Piton.js builds a consistent platform on which to use data retrieved from a JSON-LD Resful API.
 
 Piton supports a Promise-based interface for loading JSON Linked Data documents and expanding links.
