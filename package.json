@@ -1,7 +1,7 @@
 {
   "name": "piton",
   "version": "0.1.0",
-  "main": "src/api-getter.js",
+  "main": "src/export.js",
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
