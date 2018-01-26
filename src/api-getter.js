@@ -1,31 +1,29 @@
-const axios = require('axios')
-var checker = require('./api-parser.js')
-// const API_DEFINITIONS = require('./test/api-definitions.json')
+/*
+  API-Getter is a Promise-based wrapper to API-Parser that supports getting results from a GET API endpoint.
+  The parser is re-usable multiple times with one instantiation.
+*/
 
-function EpiAPI (API_DEFINITIONS) {
+const axios = require('axios')
+var apiParser = require('./api-parser.js')
+
+function getAPI (API_DEFINITIONS) {
+  if (!API_DEFINITIONS) {
+    throw new Error('API_DEFINITIONS need to be defined')
+  }
   return {
     getAPI: function (endpoint) {
       return axios.get(endpoint)
-        .then((resp) => checker.stripWrapper(resp.data))
+        .then((resp) => apiParser.stripWrapper(resp.data))
         .then((resp) => {
           if (endpoint[endpoint.length - 1] === '/') {
-            return checker.ensureIsSingle(resp)
+            return apiParser.ensureIsSingle(resp)
           } else {
             return resp
           }
         })
-        .then((res) => checker.processAPIResponse(res, API_DEFINITIONS))
+        .then((res) => apiParser.processAPIResponse(res, API_DEFINITIONS))
     }
   }
 }
 
-// Example calling
-// async function doThing () {
-//   let myAPI = new EpiAPI(API_DEFINITIONS)
-//   let resp = await myAPI.getAPI('http://environment.data.gov.uk/catchment-planning/so/WaterBody/GB109053027530.json')
-//   console.log(JSON.stringify(resp))
-// }
-
-// doThing()
-
-export default EpiAPI
+export default getAPI
