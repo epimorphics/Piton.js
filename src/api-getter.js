@@ -26,4 +26,6 @@ function getAPI (API_DEFINITIONS) {
   }
 }
 
-export default getAPI
+export {
+  getAPI
+}
