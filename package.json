@@ -6,9 +6,9 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "lint": "eslint --ext .js src test/unit/specs test/e2e/specs",
-    "patch-release": "npm version patch && npm publish && git push --follow-tags",
-    "minor-release": "npm version minor && npm publish && git push --follow-tags",
-    "major-release": "npm version major && npm publish && git push --follow-tags"
+    "patch-release": "webpack && npm version patch && npm publish && git push --follow-tags",
+    "minor-release": "webpack && npm version minor && npm publish && git push --follow-tags",
+    "major-release": "webpack && npm version major && npm publish && git push --follow-tags"
   },
   "dependencies": {
     "axios": "^0.17.1",
