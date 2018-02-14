@@ -35,10 +35,12 @@ The final processing of the resulting objects is to check if there's a value for
 "http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict": {
   "statics": {
     "slug": "RiverBasinDistrict",
+    "measures": []
   },
   "props": {
     "label": "label",
-    "notation": "notation"
+    "notation": "notation",
+    "measures": "measures"
   },
   "required": ["label", "notation", "slug", "type"]
 }
