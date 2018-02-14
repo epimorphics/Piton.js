@@ -12,5 +12,12 @@ module.exports = {
 
     filename: "bundle.js", // string
     // the filename template for entry chunks
-  }
+
+    library: "Piton", // string,
+    // the name of the exported library
+
+    libraryTarget: "umd" // universal module definition
+  },
+
+  target: "web" // enum
 }
