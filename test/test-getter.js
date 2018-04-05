@@ -1,15 +1,7 @@
 /* eslint-env node, mocha */
 var assert = require('assert')
-const assertThrows = require('assert-throws-async')
 var getter = require('../src/api-getter.js')
 const API_DEFINITIONS = require('./api-definitions.json')
-
-const riverBasinDistrict = require('./data/12.json')
-const managementCatchment = require('./data/3049.json')
-const operationalCatchment = require('./data/3216.json')
-const waterbody = require('./data/GB109053027530.json')
-
-var _ = require('lodash')
 
 describe('Api Getter', function () {
   it('Should get a result', async function () {
