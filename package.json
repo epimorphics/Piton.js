@@ -4,7 +4,7 @@
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "webpack --mode development && mocha --compilers js:babel-core/register",
     "lint": "eslint --ext .js src test/unit/specs test/e2e/specs",
     "patch-release": "webpack --mode development && npm version patch && npm publish && git push --follow-tags",
     "minor-release": "webpack --mode development && npm version minor && npm publish && git push --follow-tags",
