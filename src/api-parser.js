@@ -10,6 +10,7 @@ function ensureIsArray (prop) {
 
 // Return first item in array
 function ensureIsSingle (prop) {
+  if (!prop) return prop
   if (!Array.isArray(prop)) return prop
   return prop[0]
 }
@@ -27,6 +28,7 @@ function findObjectType (obj = {}, definitions = []) {
 // Remove wrapper from API response
 // Returns items property if exists
 function stripWrapper (res) {
+  if (!res) return res
   if (res.items) {
     return res.items
   }
