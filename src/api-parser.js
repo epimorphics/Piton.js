@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const axios = require('axios')
+const fetch = require('superagent')
 
 // Ensures var passed in is of type Array,
 // or adds it to new Array
@@ -61,10 +61,14 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
     }
 
     if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
+      console.log('Loading data for: ', obj['@id'])
       // simply @id with no data.
-      obj = await axios.get(obj['@id'], {headers: {'Accept': 'application/json'}})
-        .then((resp) => stripWrapper(resp.data))
-        .then(ensureIsSingle).catch((e) => {
+      obj = await fetch.get(obj['@id'])
+        .set('Accept', 'application/json')
+        .then((resp) => resp.body)
+        .then(stripWrapper)
+        .then(ensureIsSingle)
+        .catch((e) => {
           return obj
         })
     }

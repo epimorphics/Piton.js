@@ -4,7 +4,7 @@
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
-    "test": "webpack --mode development && mocha --compilers js:babel-core/register",
+    "test": "webpack --mode development && mocha --compilers js:babel-core/register --require babel-polyfill",
     "lint": "eslint --ext .js src test/unit/specs test/e2e/specs",
     "patch-release": "webpack --mode development && npm version patch && npm publish && git push --follow-tags",
     "minor-release": "webpack --mode development && npm version minor && npm publish && git push --follow-tags",
@@ -13,14 +13,13 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
-    "yarn": "^1.5.1"
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
     "assert-throws-async": "^2.0.1",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^1.6.1",

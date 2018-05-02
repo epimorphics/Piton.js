@@ -87,9 +87,7 @@ describe('Api Checker', function () {
         let obj = _.cloneDeep(proto)
         delete obj.label
         assertThrows(async function () {
-          await checker.processAPIResponse(obj, API_DEFINITIONS).catch((e) => {
-            console.log('caught')
-          })
+          await checker.processAPIResponse(obj, API_DEFINITIONS)
         })
       })
       it('should fill out properties with @id', async function () {

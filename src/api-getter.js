@@ -3,7 +3,7 @@
   The parser is re-usable multiple times with one instantiation.
 */
 
-const axios = require('axios')
+const fetch = require('superagent')
 var apiParser = require('./api-parser.js')
 
 function getAPI (API_DEFINITIONS) {
@@ -12,8 +12,8 @@ function getAPI (API_DEFINITIONS) {
   }
   return {
     getAPI: function (endpoint) {
-      return axios.get(endpoint)
-        .then((resp) => apiParser.stripWrapper(resp.data))
+      return fetch.get(endpoint)
+        .then((resp) => apiParser.stripWrapper(resp.body))
         .then((resp) => {
           if (endpoint[endpoint.length - 1] === '/') {
             return apiParser.ensureIsSingle(resp)
