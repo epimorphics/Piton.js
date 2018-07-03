@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const fetch = require('superagent')
+const URL = require('url-parse')
 
 // Ensures var passed in is of type Array,
 // or adds it to new Array
@@ -48,7 +49,7 @@ function checkExists (obj, required) {
 // Obj - 'Items' response from the server
 // Definitions - Custom object definitions mapped to their type
 // Hops - Number of hops since the original call.
-async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
+async function processAPIResponse (obj = {}, definitions = {}, hops = 0, forceHttps = true) {
   return new Promise(async (resolve, reject) => {
     if (Array.isArray(obj)) {
       return resolve(
@@ -61,15 +62,35 @@ async function processAPIResponse (obj = {}, definitions = {}, hops = 0) {
     }
 
     if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
-      console.log('Loading data for: ', obj['@id'])
       // simply @id with no data.
-      obj = await fetch.get(obj['@id'])
+      let fetchUrl = obj['@id']
+      if (forceHttps) {
+        // Transform to https url.
+        let parsedUrl = new URL(fetchUrl)
+        if (parsedUrl.protocol === 'http:') {
+          console.log('Forcing https')
+          parsedUrl.protocol = 'https:'
+        }
+        fetchUrl = parsedUrl.toString()
+      }
+
+      console.log('Loading data for: ', fetchUrl)
+
+      obj = await fetch.get(fetchUrl)
         .set('Accept', 'application/json')
         .then((resp) => resp.body)
         .then(stripWrapper)
         .then(ensureIsSingle)
         .catch((e) => {
-          return obj
+          console.log('Cannot get secure. Dropping to http')
+          return fetch.get(obj['@id'])
+            .set('Accept', 'application/json')
+            .then((resp) => resp.body)
+            .then(stripWrapper)
+            .then(ensureIsSingle)
+            .catch((e) => {
+              return obj
+            })
         })
     }
 
