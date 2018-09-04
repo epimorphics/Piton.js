@@ -15,9 +15,9 @@ obj - `{}` Object to process.
 
 definitions - `{}` Schema definitions object
 
-hops - `Number` [Optional] Max number of hops to populate in the graph
+hops - `Number` [Optional] Max number of hops to populate in the graph. A hop is any remote id loaded.
 
-Returns `Promise` containing JSON representation of object
+Returns `Promise` containing JSON representation of object.
 
 ## Schema
 A schema object is used to map JSON-LD 'types' to a set of transforms.
@@ -48,3 +48,7 @@ The final processing of the resulting objects is to check if there's a value for
 
 ## Why
 This was developed to provide a consistent representation of a JSON-LD API. Especially useful in a 'dumb json' templating environment like Vue JS.
+
+## Future Development
+* Reject Promise in a native way
+* Add tests
