@@ -1,27 +1,36 @@
-/*
-  API-Getter is a Promise-based wrapper to API-Parser that supports getting results from a GET API endpoint.
-  The parser is re-usable multiple times with one instantiation.
-*/
+import fetch from 'superagent'
 
-const fetch = require('superagent')
-var apiParser = require('./api-parser.js')
+import { processAPIResponse } from './api-parser'
+import { stripWrapper } from './util'
 
+/**
+ * API-Getter is a Promise-based wrapper to API-Parser that supports getting results from a GET API endpoint.
+ * The parser is re-usable multiple times with one instantiation.
+ *
+ * @returns {Object}
+ */
 function getAPI (API_DEFINITIONS) {
   if (!API_DEFINITIONS) {
     throw new Error('API_DEFINITIONS need to be defined')
   }
+
   return {
-    getAPI: function (endpoint) {
+    /**
+     * Fetches API and parses for definitions
+     * @param {string} endpoint
+     */
+    getAPI (endpoint) {
       return fetch.get(endpoint)
-        .then((resp) => apiParser.stripWrapper(resp.body))
-        .then((resp) => {
-          if (endpoint[endpoint.length - 1] === '/') {
-            return apiParser.ensureIsSingle(resp)
-          } else {
-            return resp
+        .set('Accept', 'application/json')
+        .then(resp => {
+          resp = stripWrapper(resp.body)
+
+          if (endpoint.last === '/' && Array.isArray(resp)) {
+            resp = resp[0]
           }
+
+          return processAPIResponse(resp, API_DEFINITIONS)
         })
-        .then((res) => apiParser.processAPIResponse(res, API_DEFINITIONS))
     }
   }
 }

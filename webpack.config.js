@@ -10,8 +10,8 @@ module.exports = {
       }
     ]
   },
-  'entry': ['babel-polyfill', './src/'],
-  'output': {
-    'libraryTarget': 'commonjs'
+  entry: ['babel-polyfill', './src/'],
+  output: {
+    library: 'commonjs'
   }
 }
