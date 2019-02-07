@@ -1,154 +1,121 @@
-const _ = require('lodash')
-const fetch = require('superagent')
-const URL = require('url-parse')
+import cloneDeep from 'lodash/cloneDeep'
+import loGet from 'lodash/get'
+import fetch from 'superagent'
+import URL from 'url-parse'
 
-// Ensures var passed in is of type Array,
-// or adds it to new Array
-function ensureIsArray (prop) {
-  if (Array.isArray(prop)) return prop
-  return [prop]
+import { findObjectType, stripWrapper, ensureIsSingle } from '../src/util'
+
+function getResponse (fetchUrl) {
+  return fetch.get(fetchUrl)
+    .set('Accept', 'application/json')
+    .then(responseHandler)
 }
 
-// Return first item in array
-function ensureIsSingle (prop) {
-  if (!prop) return prop
-  if (!Array.isArray(prop)) return prop
-  return prop[0]
+function responseHandler (res) {
+  return ensureIsSingle(stripWrapper(res.body))
 }
 
-// Find type of object given list of defined types
-// Returns String type
-function findObjectType (obj = {}, definitions = []) {
-  if (!obj.type) return
-  let types = ensureIsArray(obj.type).map((typ) => typ['@id'] || typ)
-  return definitions.find((val) => {
-    return types.indexOf(val) > -1
-  })
-}
-
-// Remove wrapper from API response
-// Returns items property if exists
-function stripWrapper (res) {
-  if (!res) return res
-  if (res.items) {
-    return res.items
-  }
-  return res
-}
-
-function checkExists (obj, required) {
-  // Check properties exist
-  for (let prop of required) {
-    if (!obj.hasOwnProperty(prop) || typeof obj[prop] === 'undefined') {
-      return prop
-    }
-  }
-}
-
-// Process a pre-processed API response.
-// Obj - 'Items' response from the server
-// Definitions - Custom object definitions mapped to their type
-// Hops - Number of hops since the original call.
+/**
+ * Process a pre-processed API response.
+ *
+ * @async
+ * @param {object} obj 'Items' response from the server
+ * @param {object} definitions Custom object definitions mapped to their type
+ * @param {number=0} hops Number of hops since the original call.
+ * @param {boolean=true} forceHttps
+ */
 async function processAPIResponse (obj = {}, definitions = {}, hops = 0, forceHttps = true) {
-  return new Promise(async (resolve, reject) => {
-    if (Array.isArray(obj)) {
-      return resolve(
-        Promise.all(
-          obj.map((item) => {
-            return processAPIResponse(item, definitions)
-          })
-        )
-      )
-    }
+  if (Array.isArray(obj)) {
+    return Promise.all(
+      obj.map(item => processAPIResponse(item, definitions))
+    )
+  }
 
-    if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
-      // simply @id with no data.
-      let fetchUrl = obj['@id']
-      if (forceHttps) {
-        // Transform to https url.
-        let parsedUrl = new URL(fetchUrl)
-        if (parsedUrl.protocol === 'http:') {
-          console.log('Forcing https')
-          parsedUrl.protocol = 'https:'
-        }
-        fetchUrl = parsedUrl.toString()
+  if (obj['@id'] && Object.keys(obj).length === 1 && hops < 2) {
+    // simply @id with no data.
+    let fetchUrl = obj['@id']
+    if (forceHttps) {
+      // Transform to https url.
+      let parsedUrl = new URL(fetchUrl)
+      if (parsedUrl.protocol === 'http:') {
+        console.log('Forcing https')
+        parsedUrl.protocol = 'https:'
       }
-
-      console.log('Loading data for: ', fetchUrl)
-
-      obj = await fetch.get(fetchUrl)
-        .set('Accept', 'application/json')
-        .then((resp) => resp.body)
-        .then(stripWrapper)
-        .then(ensureIsSingle)
-        .catch((e) => {
-          console.log('Cannot get secure. Dropping to http')
-          return fetch.get(obj['@id'])
-            .set('Accept', 'application/json')
-            .then((resp) => resp.body)
-            .then(stripWrapper)
-            .then(ensureIsSingle)
-            .catch((e) => {
-              return obj
-            })
-        })
+      fetchUrl = parsedUrl.toString()
     }
 
-    // Find type of obj
-    let objType = findObjectType(obj, Object.keys(definitions)) // Get objects type
-    if (!objType) {
-      return resolve(obj)
+    console.log('Loading data for: ', fetchUrl)
+
+    obj = await getResponse(fetchUrl)
+      .catch(e => {
+        console.log('Cannot get secure. Dropping to http')
+        return getResponse(obj['@id'])
+      })
+      .catch(e => obj)
+  }
+
+  // Find type of obj
+  let objType = findObjectType(obj, Object.keys(definitions)) // Get objects type
+  if (!objType) {
+    return obj
+  }
+
+  if (objType['@id']) {
+    objType = objType['@id']
+  }
+
+  // Get definition of object type
+  const DEFINITION = definitions[objType] // TODO Cleanup this to not be object but string
+  if (!DEFINITION) {
+    return obj
+  }
+
+  // Apply transform.
+  let rtn = cloneDeep(DEFINITION.statics)
+
+  await Promise.all(Object.keys(DEFINITION.props).map(async prop => {
+    let val = loGet(obj, DEFINITION.props[prop])
+
+    if (!val) return
+
+    if (val.type) {
+      val = await processAPIResponse(val, definitions)
     }
 
-    if (objType['@id']) {
-      objType = objType['@id']
+    if (Array.isArray(val)) {
+      // Array value. Process each individually
+      val = await processAPIResponse(val, definitions, hops + 1)
     }
 
-    // Get definition of object type
-    const DEFINITION = definitions[objType] // TODO Cleanup this to not be object but string
-    if (!DEFINITION) {
-      return resolve(obj)
+    if (val['@id'] && Object.keys(val).length === 1) {
+      val = await processAPIResponse(val, definitions, hops + 1)
     }
-    // Apply transform.
-    let rtn = JSON.parse(JSON.stringify(DEFINITION.statics))
-    for (let prop in DEFINITION.props) {
-      let val = _.get(obj, DEFINITION.props[prop])
-      if (!val) continue
-      if (val.type) {
-        val = await processAPIResponse(val, definitions)
-      }
+
+    // Add the value to object being built
+    if (Array.isArray(rtn[prop])) { // Add / Append value to array
       if (Array.isArray(val)) {
-        // Array value. Process each individually
-        val = await processAPIResponse(val, definitions, hops + 1)
-      }
-      if (val['@id'] && Object.keys(val).length === 1) {
-        val = await processAPIResponse(val, definitions, hops + 1)
-      }
-      // Add the value to object being built
-      if (Array.isArray(rtn[prop])) { // Add / Append value to array
-        if (Array.isArray(val)) {
-          rtn[prop] = rtn[prop].concat(val) // Concatenate Arrays
-        } else {
-          rtn[prop].push(val) // Add to Array
-        }
+        rtn[prop] = rtn[prop].concat(val) // Concatenate Arrays
       } else {
-        rtn[prop] = val
+        rtn[prop].push(val) // Add to Array
       }
+    } else {
+      rtn[prop] = val
     }
+  }))
 
-    if (DEFINITION.required && checkExists(rtn, DEFINITION.required)) {
-      reject(new Error('property: ' + checkExists(rtn, DEFINITION.required) + ' not in obj: ' + JSON.stringify(rtn)))
+  if (DEFINITION.required) {
+    const props = DEFINITION.required.filter(
+      prop => !rtn.hasOwnProperty(prop) || typeof rtn[prop] === 'undefined'
+    )
+
+    if (props.length) {
+      throw new Error(`properties: [${props.join(', ')}] not in obj: ${JSON.stringify(rtn)}`)
     }
+  }
 
-    return resolve(rtn)
-  })
+  return rtn
 }
 
 export {
-  processAPIResponse,
-  ensureIsArray,
-  ensureIsSingle,
-  findObjectType,
-  stripWrapper,
-  checkExists
+  processAPIResponse
 }

@@ -1,17 +1,16 @@
 /* eslint-env node, mocha */
-var assert = require('assert')
-const assertThrows = require('assert-throws-async')
-var checker = require('../src/api-parser.js')
-const API_DEFINITIONS = require('./api-definitions.json')
+import assert from 'assert'
+import assertThrows from 'assert-throws-async'
+import * as checker from '../src/api-parser'
+import { ensureIsSingle, stripWrapper } from '../src/util'
+import API_DEFINITIONS from './api-definitions.json'
 
-const riverBasinDistrict = require('./data/12.json')
-const managementCatchment = require('./data/3049.json')
-const operationalCatchment = require('./data/3216.json')
-const waterbody = require('./data/GB109053027530.json')
+import riverBasinDistrict from './data/12.json'
+import managementCatchment from './data/3049.json'
+import operationalCatchment from './data/3216.json'
+import waterbody from './data/GB109053027530.json'
 
-var _ = require('lodash')
-
-// var axios = require('axios')
+import _ from 'lodash'
 
 // Perform utility automatically based on type asked for
 
@@ -23,50 +22,9 @@ var _ = require('lodash')
 // Can it simplify complex properties? Lang tags for example.
 
 describe('Api Checker', function () {
-  describe('#findObjectType()', function () {
-    it('should return empty when the value is not present', function () {
-      let obj = {type: {'@id': 'http://www.example.com'}}
-      assert.equal(undefined, checker.findObjectType(obj, ['']))
-    })
-    it('should return id when the value is present', function () {
-      let obj = {type: {'@id': 'http://www.example.com'}}
-      assert.equal(obj.type['@id'], checker.findObjectType(obj, ['http://www.example.com']))
-    })
-  })
-
-  describe('#ensureIsArray()', function () {
-    it('should return same array if passed array', function () {
-      let arr = [1, 2, 3, 4, 5, 6]
-      assert.equal(arr, checker.ensureIsArray(arr))
-    })
-    it('should return object wrapped in array if passed object', function () {
-      let obj = {'foo': 'bar'}
-      assert.deepEqual([obj], checker.ensureIsArray(obj))
-    })
-    it('should return primitive wrapped in array if passed primitive', function () {
-      let obj = 1
-      assert.deepEqual([obj], checker.ensureIsArray(obj))
-    })
-  })
-
-  describe('#ensureIsSingle()', function () {
-    it('should return same object if passed object', function () {
-      let obj = {'foo': 'bar'}
-      assert.equal(obj, checker.ensureIsSingle(obj))
-    })
-    it('should return object unwrapped from array if passed object', function () {
-      let obj = {'foo': 'bar'}
-      assert.deepEqual(obj, checker.ensureIsSingle([obj]))
-    })
-    it('should return primitive if passed primitive', function () {
-      let obj = 1
-      assert.deepEqual(obj, checker.ensureIsSingle([obj]))
-    })
-  })
-
   describe('#processAPIResponse()', function () {
     describe('general', function () {
-      let proto = checker.ensureIsSingle(checker.stripWrapper(_.cloneDeep(riverBasinDistrict)))
+      let proto = ensureIsSingle(stripWrapper(_.cloneDeep(riverBasinDistrict)))
 
       it('should work for single values', async function () {
         let processed = await checker.processAPIResponse(proto, API_DEFINITIONS)
@@ -94,13 +52,9 @@ describe('Api Checker', function () {
         this.timeout(10 * 1000)
         const myDefs = {
           'http://environment.data.gov.uk/catchment-planning/def/water-framework-directive/RiverBasinDistrict': {
-            'statics': {
-              type: []
-            },
-            'props': {
-              'type': 'type'
-            },
-            'required': ['type']
+            statics: { type: [] },
+            props: { type: 'type' },
+            required: ['type']
           }
         }
         let processed = await checker.processAPIResponse(_.cloneDeep(proto), myDefs)
@@ -109,7 +63,7 @@ describe('Api Checker', function () {
     })
 
     describe('riverBasinDistrict', function () {
-      let proto = checker.ensureIsSingle(checker.stripWrapper(_.cloneDeep(riverBasinDistrict)))
+      let proto = ensureIsSingle(stripWrapper(_.cloneDeep(riverBasinDistrict)))
 
       it('should add type and slug', async function () {
         let processed = await checker.processAPIResponse(proto, API_DEFINITIONS)
@@ -124,7 +78,7 @@ describe('Api Checker', function () {
     })
 
     describe('management Catchment', function () {
-      let proto = checker.ensureIsSingle(checker.stripWrapper(_.cloneDeep(managementCatchment)))
+      let proto = ensureIsSingle(stripWrapper(_.cloneDeep(managementCatchment)))
 
       it('should add type and slug', async function () {
         let processed = await checker.processAPIResponse(_.cloneDeep(proto), API_DEFINITIONS)
@@ -139,7 +93,7 @@ describe('Api Checker', function () {
     })
 
     describe('operational Catchment', function () {
-      let proto = checker.ensureIsSingle(checker.stripWrapper(_.cloneDeep(operationalCatchment)))
+      let proto = ensureIsSingle(stripWrapper(_.cloneDeep(operationalCatchment)))
 
       it('should add type and slug', async function () {
         let processed = await checker.processAPIResponse(_.cloneDeep(proto), API_DEFINITIONS)
@@ -154,7 +108,7 @@ describe('Api Checker', function () {
     })
 
     describe('waterBody', function () {
-      let proto = checker.ensureIsSingle(checker.stripWrapper(_.cloneDeep(waterbody)))
+      let proto = ensureIsSingle(stripWrapper(_.cloneDeep(waterbody)))
 
       it('should add type and slug', async function () {
         let processed = await checker.processAPIResponse(_.cloneDeep(proto), API_DEFINITIONS)
