@@ -1,6 +1,6 @@
 # Piton.js
 
-[![Build Status](https://travis-ci.com/epimorphics/Piton.js.svg?token=SsrjjdmEtzcJsGDqjxQw&branch=master)](https://travis-ci.com/epimorphics/Piton.js)
+** Note: 8 Sept, 2021 ** We're not actively maintaining this code any more, so we are putting this repo into archive mode. If anyone would like to assume ownership and maintenance for this code, please [let us know](mailto:open-source@epimorphics.com).
 
 ![A Piton](piton.png)
 
